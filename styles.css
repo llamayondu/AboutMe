@@ -37,6 +37,12 @@
     right: 15vh;
 }
 
+#mail-icon {
+    height: 6vh;
+    position: relative;
+    right: -3vh;
+}
+
 #insta-icon {
     width: 5vh;
     position: relative;
@@ -118,7 +124,6 @@ body {
 
 #overlay-title {
     font-family: 'Jost', sans-serif, 'Courier New', Courier, monospace;
-    /* background-color: var(--bg-color); */
     color: var(--secondary-color);
     width: 11em;
     position: relative;
@@ -130,7 +135,6 @@ body {
     font-family: 'Raleway', sans-serif, 'Courier New', Courier, monospace;
     font-size: 150%;
     position: relative;
-    /* background-color: var(--bg-color); */
     color: var(--secondary-color);
     width: 50vw;
     left: 12vh;
@@ -202,14 +206,31 @@ body {
     }
 
     #github-icon {
+        top: 3vh;
         width: 2vh;
-        /* top: 8.6vh; */
-        right: 3vh;
+        right: 1.6vh;
     }
 
+    .toolbar {
+        width: 45vh;
+    }
+
+
     #insta-icon {
+        top: 0.5vh;
         width: 2vh;
-        left: -2.5vh;
+        left: 0.5vh;
+    }
+
+    #mail-icon {
+        width: 2.5vh;
+        height: auto;
+        top: -2.25vh;
+        right: -3vh;
+    }
+
+    .title {
+        font-size: 200%;
     }
 
     body {
