@@ -254,7 +254,10 @@ body {
         font-size: 200%;
     }
 
-
+    #overlay-title {
+        font-size: 350%;
+    }
+    
     body {
         width: 55.5vh;
     }
