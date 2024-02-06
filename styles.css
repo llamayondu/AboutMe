@@ -1,0 +1,218 @@
+:root {
+    --primary-color: rgb(38, 38, 38);
+    --secondary-color: aliceblue;
+    --background-image: url(dark-bg.jpg);
+    --bg-color: black;
+}
+
+.light-theme {
+    --primary-color: rgb(207, 204, 204);
+    --secondary-color: black;
+    --bg-color: #E9E9E9;
+    --background-image: url(light-bg.jpg);
+
+}
+
+#about-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#profile-picture {
+    position: absolute;
+    right: 25vh;
+    top: 25vh;
+    width: 45vh;
+    height: auto;
+    border-color: black;
+    border-radius: 4vh;
+    margin-bottom: 1.5vh;
+    border: 3vh;
+}
+
+#github-icon {
+    width: 5vh;
+    position: relative;
+    right: 15vh;
+}
+
+#insta-icon {
+    width: 5vh;
+    position: relative;
+    right: 15vh;
+    left: -5vh;
+}
+
+body {
+    background-image: var(--background-image);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    margin: 0;
+    width: 100vw;
+}
+
+.top {
+    background-color: var(--primary-color);
+    padding: 10px;
+    width: 100vw;
+    text-align: center;
+}
+
+.toolhead {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    align-items: flex-end;
+}
+
+.black-gap {
+    background-color: var(--primary-color);
+    height: 5px;
+    border: none;
+}
+
+.toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    align-items: center;
+    
+}
+
+.title {
+    font-family: 'Jost', sans-serif, 'Courier New', Courier, monospace;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    cursor: pointer;
+    width: 11em;
+    font-size: 250%;
+    transition: transform 0.3s ease-out;
+}
+
+.title:hover {
+    transform: translateY(-5px); 
+}
+
+#icon {
+    width: 6vh;
+    cursor: pointer;
+    position: absolute;
+    top: 3vh;
+    right: 10vh;
+}
+
+.title.new-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#overlay-title {
+    font-family: 'Jost', sans-serif, 'Courier New', Courier, monospace;
+    /* background-color: var(--bg-color); */
+    color: var(--secondary-color);
+    width: 11em;
+    position: relative;
+    font-size: 300%;
+    left: 10vh;
+}
+
+#overlay-text {
+    font-family: 'Raleway', sans-serif, 'Courier New', Courier, monospace;
+    font-size: 150%;
+    position: relative;
+    /* background-color: var(--bg-color); */
+    color: var(--secondary-color);
+    width: 50vw;
+    left: 12vh;
+}
+
+.tool-button {
+    font-family: 'Raleway', sans-serif, 'Courier New', Courier, monospace;
+    font-size: 200%;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    cursor: pointer;
+    width: 7.5em;
+    transition: transform 0.3s ease-out;
+}
+
+.tool-button:hover {
+    transform: translateY(-5px); 
+}
+
+#overlay-content {
+    color: var(--secondary-color);
+}
+
+.tool-icons {
+    width: 15em;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .title {
+        width: 100vw;
+    }
+
+    .top {
+        width: 100vw;
+    }
+
+    #icon {
+        right: 5vw;
+    }
+
+    .title.new-button {
+        right: 5vw;
+    }
+
+    #overlay-title {
+        left: 5vw;
+    }
+
+    #overlay-text {
+        width: 50vw;
+        left: 5vw;
+    }
+
+    .tool-button {
+        width: 100%;
+        font-size: 70%;
+    }
+
+    #icon {
+        width: 4vh;
+    }
+
+    #profile-picture {
+        width: 17vh;
+        right: 3vh;
+        top: 20vh;
+    }
+
+    #github-icon {
+        width: 2vh;
+        /* top: 8.6vh; */
+        right: 3vh;
+    }
+
+    #insta-icon {
+        width: 2vh;
+        left: -2.5vh;
+    }
+
+    body {
+        width: 55.5vh;
+    }
+}

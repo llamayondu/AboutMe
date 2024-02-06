@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prabhas Varma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="top">
+        <div class="toolhead">
+            <button class="title" onclick="showOverlay('About')">Prabhas Varma</button>
+            <img id="icon" src="sun.png">
+        </div>
+        <div class="black-gap"></div>
+        <div class="toolbar">
+            <button class="tool-button" onclick="showOverlay('Education')">Education</button>
+            <button class="tool-button" onclick="showOverlay('Achievements')">Achievements</button>
+            <button class="tool-button" onclick="showOverlay('Skills')">Skills</button>
+            <button class="tool-button" id="blog-button">Blog</button>
+            <button class="tool-button" onclick="downloadResume()">Resume</button> <!-- New button -->
+            <div class="tool-icons">
+                <a href="https://github.com/llamayondu"><img src="github-white.png" id="github-icon"></a>
+                <a href="https://www.instagram.com/llamayondu_og/"><img src="insta-white.png" id="insta-icon"></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay">
+        <div id="overlay-content">
+            <h1 id="overlay-title">About</h1>
+            <div id="about-content">
+                <p id="overlay-text">I am Prabhas Varma. I like math and Valorant. <br>I have lived in Hyderabad all my life and hence I also love Biryani.<br><br> I am approximately 5 feet and 10 inches tall. <br>I like food and games a lot. </p>
+                <img id="profile-picture" src="profile-pic.jpg" alt="Profile Picture">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

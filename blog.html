@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function initializeBlog(blogId, likeButtonId, likeCounterId, commentSectionId, commentTextId, postCommentBtnId) {
+                var icon = document.getElementById("icon");
+                var github_icon = document.getElementById("github-icon");
+                var insta_icon = document.getElementById("insta-icon");
+                var likeButton = document.getElementById(likeButtonId);
+                var likeCount = localStorage.getItem(blogId + "LikeCount") || 0;
+                var comments = JSON.parse(localStorage.getItem(blogId + "Comments")) || [];
+
+                // Update the initial like count
+                document.getElementById(likeCounterId).innerText = likeCount;
+
+                // Load comments from local storage
+                loadComments(commentSectionId);
+
+                icon.onclick = function () {
+                    document.body.classList.toggle("light-theme");
+                    if (document.body.classList.contains("light-theme")) {
+                        icon.src = "moon.png";
+                        github_icon.src = "github-black.png";
+                        insta_icon.src = "insta-black.png";
+                    } else {
+                        icon.src = "sun.png";
+                        github_icon.src = "github-white.png";
+                        insta_icon.src = "insta-white.png";
+                    }
+                }
+
+                likeButton.onclick = function () {
+                    likeCount++;
+                    document.getElementById(likeCounterId).innerText = likeCount;
+
+                    // Store the updated like count locally
+                    localStorage.setItem(blogId + "LikeCount", likeCount);
+                }
+
+                function postComment() {
+                    var commentText = document.getElementById(commentTextId).value;
+                    if (commentText.trim() !== "") {
+                        var newComment = "NewUser: " + commentText;
+                        comments.push(newComment);
+
+                        // Store the updated comments locally
+                        localStorage.setItem(blogId + "Comments", JSON.stringify(comments));
+
+                        // Load and display comments
+                        loadComments(commentSectionId);
+
+                        document.getElementById(commentTextId).value = "";
+                    }
+                }
+
+                function loadComments(commentSectionId) {
+                    var commentSection = document.getElementById(commentSectionId);
+                    commentSection.innerHTML = "<h3>Comments</h3>";
+
+                    for (var i = 0; i < comments.length; i++) {
+                        var newComment = document.createElement("div");
+                        newComment.innerText = comments[i];
+                        commentSection.appendChild(newComment);
+                    }
+                }
+
+                function hideOverlay() {
+                    // Hide the overlay by changing its display property back to 'none'
+                    document.getElementById('overlay').style.display = 'none';
+                }
+
+                document.getElementById(postCommentBtnId).addEventListener("click", postComment);
+            }
+
+            // Initialize the first blog
+            initializeBlog("blog1", "like-button1", "like-counter1", "comment-section1", "comment-text1", "post-comment-btn1");
+
+            // Initialize the second blog
+            initializeBlog("blog2", "like-button2", "like-counter2", "comment-section2", "comment-text2", "post-comment-btn2");
+
+            document.getElementById("back-button").addEventListener("click", function () {
+                window.location.href = "main.html";
+            })
+        });
+    </script>
+    <style>
+        :root {
+            --primary-color: rgb(38, 38, 38);
+            --secondary-color: aliceblue;
+            --background-image: url(dark-bg.jpg);
+            --bg-color: black;
+        }
+
+        .light-theme {
+            --primary-color: rgb(207, 204, 204);
+            --secondary-color: black;
+            --bg-color: #E9E9E9;
+            --background-image: url(light-bg.jpg);
+        }
+
+        body {
+            background-image: var(--background-image);
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            overflow-x: hidden;
+            margin: 0;
+            width: 100vw;
+        }
+
+        .top {
+            background-color: var(--primary-color);
+            padding: 5px 10px;
+            width: 100vw;
+            text-align: center;
+        }
+
+        .toolhead {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            align-items: flex-end;
+        }
+
+        #icon {
+            width: 6vh;
+            cursor: pointer;
+            position: absolute;
+            top: 3vh;
+            right: 10vh;
+        }
+
+        .title {
+            font-family: 'Jost', sans-serif, 'Courier New', Courier, monospace;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            position: relative;
+            left: 10vw;
+            width: 11em;
+            font-size: 250%;
+        }
+
+        .back {
+            color: var(--secondary-color);
+            position: relative;
+            width: 11em;
+            left: -50vw;
+            top: -0.5vw;
+            font-size: 200%;
+
+            font-family: 'Raleway', sans-serif, 'Courier New', Courier, monospace;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease-out;
+        }
+
+        .back:hover {
+            transform: translateY(-5px); 
+        }
+
+        .blog-post {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+            border-radius: 10px;
+        }
+
+        .like-button {
+            cursor: pointer;
+            font-size: 20px;
+            color: red;
+        }
+
+        #like-counter {
+            margin-left: 5px;
+            font-size: 18px;
+        }
+
+        .comment-section {
+            margin-top: 20px;
+        }
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .comment-form textarea {
+            font-family: 'Raleway', sans-serif, 'Courier New', Courier, monospace;
+            height: 50px; 
+            margin-bottom: 10px;
+        }
+
+        .comment-btn {
+            font-family: 'Raleway', sans-serif, 'Courier New', Courier, monospace;
+            cursor: pointer;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .comment-title {
+            font-family: 'Jost', sans-serif, 'Courier New', Courier, monospace;
+        }
+
+        .comment-body {
+            font-family: 'Raleway', sans-serif, 'Courier New', Courier, monospace;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .toolhead {
+                flex-direction: row;
+                align-items: flex-end;
+            }
+
+            .blog-post {
+                width: 75vw;
+            }
+            
+            .title {
+                font-size: 150%;
+            }
+            .back {
+                left: -70vw;
+                font-size: 100%;
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">
+        <div class="toolhead">
+            <h1 class="title">Blog</h1>
+            <h1 class="back" id="back-button">Back</h1>
+            <img id="icon" src="sun.png">
+        </div>
+    </div>
+
+    <br>
+
+    <div class="blog-post">
+        <h2 class="comment-title">Duck Wants Grapes</h2>
+        <p class="comment-body">Once upon a time, there was a curious duck who had heard about delicious grapes...</p>
+
+        <div class="like-button" id="like-button1">&#10084; <span id="like-counter1">0</span></div>
+
+        <div id="comment-section1" class="comment-section1">
+            <h3 class="comment-title">Comments</h3>
+        </div>
+
+        <div class="comment-form">
+            <textarea id="comment-text1" placeholder="Write your comment here..."></textarea>
+            <button id="post-comment-btn1" class="comment-btn">Post Comment</button>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="blog-post">
+        <h2 class="comment-title">Adventures of a Cat</h2>
+        <p class="comment-body">Follow the thrilling adventures of a courageous cat as it explores the world...</p>
+
+        <div class="like-button" id="like-button2">&#10084; <span id="like-counter2">0</span></div>
+
+        <div id="comment-section2" class="comment-section2">
+            <h3 class="comment-title">Comments</h3>
+        </div>
+
+        <div class="comment-form">
+            <textarea id="comment-text2" placeholder="Write your comment here..."></textarea>
+            <button id="post-comment-btn2" class="comment-btn">Post Comment</button>
+        </div>
+    </div>
+</body>
+
+</html>
