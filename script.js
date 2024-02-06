@@ -55,24 +55,25 @@ document.addEventListener("DOMContentLoaded", function (){
 
     console.log(icon);
 
-    icon.onclick = function(){
+    icon.onclick = function () {
         document.body.classList.toggle("light-theme");
-        if(document.body.classList.contains("light-theme")){
-            icon.src="moon.png";
-            github_icon.src="github-black.png";
-            insta_icon.src="insta-black.png";
-            mail_icon.src="mail-black.png";
 
+        if (document.body.classList.contains("light-theme")) {
+            icon.src = "moon.png";
+            github_icon.src = "github-black.png";
+            insta_icon.src = "insta-black.png";
+            mail_icon.src = "mail-black.png";
+            document.documentElement.style.setProperty('--background-image', 'url(light-bg.jpg)');
         } else {
-            icon.src="sun.png";
-            github_icon.src="github-white.png";
-            insta_icon.src="insta-white.png";
-            mail_icon.src="mail-white.png";
+            icon.src = "sun.png";
+            github_icon.src = "github-white.png";
+            insta_icon.src = "insta-white.png";
+            mail_icon.src = "mail-white.png";
+            document.documentElement.style.setProperty('--background-image', 'url(dark-bg.jpg)');
         }
     }
 
     function hideOverlay() {
-        // Hide the overlay by changing its display property back to 'none'
         document.getElementById('overlay').style.display = 'none';
     }
 

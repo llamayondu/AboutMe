@@ -29,10 +29,12 @@
                         icon.src = "moon.png";
                         github_icon.src = "github-black.png";
                         insta_icon.src = "insta-black.png";
+                        document.documentElement.style.setProperty('--background-image', 'url(light-bg.jpg)');
                     } else {
                         icon.src = "sun.png";
                         github_icon.src = "github-white.png";
                         insta_icon.src = "insta-white.png";
+                        document.documentElement.style.setProperty('--background-image', 'url(dark-bg.jpg)');
                     }
                 }
 
@@ -96,6 +98,7 @@
             --secondary-color: aliceblue;
             --background-image: url(dark-bg.jpg);
             --bg-color: black;
+            --transition-duration: 0.3s; /* Add this line */
         }
 
         .light-theme {
@@ -114,6 +117,7 @@
             overflow-x: hidden;
             margin: 0;
             width: 100vw;
+            transition: background-image var(--transition-duration);
         }
 
         .top {
@@ -121,6 +125,7 @@
             padding: 5px 10px;
             width: 100vw;
             text-align: center;
+            transition: background-color var(--transition-duration); /* Add this line */
         }
 
         .toolhead {
@@ -130,6 +135,7 @@
             background-color: var(--primary-color);
             color: var(--secondary-color);
             align-items: flex-end;
+            transition: background-color var(--transition-duration); /* Add this line */
         }
 
         #icon {
@@ -146,9 +152,10 @@
             color: var(--secondary-color);
             border: none;
             position: relative;
-            left: 10vw;
+            left: 0vw;
             width: 11em;
             font-size: 250%;
+            transition: background-color var(--transition-duration);
         }
 
         .back {
@@ -158,7 +165,6 @@
             left: -50vw;
             top: -0.5vw;
             font-size: 200%;
-
             font-family: 'Raleway', sans-serif, 'Courier New', Courier, monospace;
             border: none;
             cursor: pointer;
@@ -166,7 +172,7 @@
         }
 
         .back:hover {
-            transform: translateY(-5px); 
+            transform: translateY(-5px);
         }
 
         .blog-post {
@@ -202,7 +208,7 @@
 
         .comment-form textarea {
             font-family: 'Raleway', sans-serif, 'Courier New', Courier, monospace;
-            height: 50px; 
+            height: 50px;
             margin-bottom: 10px;
         }
 
@@ -234,7 +240,7 @@
             .blog-post {
                 width: 75vw;
             }
-            
+
             .title {
                 font-size: 150%;
             }
@@ -251,7 +257,6 @@
     <div class="top">
         <div class="toolhead">
             <h1 class="title">Blog</h1>
-            <h1 class="back" id="back-button">Back</h1>
             <img id="icon" src="sun.png">
         </div>
     </div>

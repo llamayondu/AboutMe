@@ -3,6 +3,19 @@
     --secondary-color: aliceblue;
     --background-image: url(dark-bg.jpg);
     --bg-color: black;
+
+    --background-image-dark: url('dark-bg.jpg');
+    --background-image-light: url('light-bg.jpg');
+    
+    --transition-duration: 0.5s;
+
+    --primary-color-dark: #222;
+    --secondary-color-dark: #fff;
+    
+    --primary-color-light: #fff;
+    --secondary-color-light: #222;
+
+    --transition-duration: 0.5s;
 }
 
 .light-theme {
@@ -56,9 +69,10 @@ body {
     background-position: center center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    overflow: hidden;
+    overflow-x: hidden;
     margin: 0;
     width: 100vw;
+    transition: background-image var(--transition-duration);
 }
 
 .top {
@@ -66,6 +80,7 @@ body {
     padding: 10px;
     width: 100vw;
     text-align: center;
+    transition: background-color var(--transition-duration);
 }
 
 .toolhead {
@@ -75,12 +90,15 @@ body {
     background-color: var(--primary-color);
     color: var(--secondary-color);
     align-items: flex-end;
+    transition: background-color var(--transition-duration);
 }
 
 .black-gap {
     background-color: var(--primary-color);
     height: 5px;
     border: none;
+    transition: background-color var(--transition-duration);
+
 }
 
 .toolbar {
@@ -90,7 +108,7 @@ body {
     background-color: var(--primary-color);
     color: var(--secondary-color);
     align-items: center;
-    
+    transition: background-color var(--transition-duration);
 }
 
 .title {
@@ -102,6 +120,8 @@ body {
     width: 11em;
     font-size: 250%;
     transition: transform 0.3s ease-out;
+    transition: background-color var(--transition-duration);
+
 }
 
 .title:hover {
@@ -127,13 +147,13 @@ body {
     color: var(--secondary-color);
     width: 11em;
     position: relative;
-    font-size: 300%;
+    font-size: 450%;
     left: 10vh;
 }
 
 #overlay-text {
     font-family: 'Raleway', sans-serif, 'Courier New', Courier, monospace;
-    font-size: 150%;
+    font-size: 250%;
     position: relative;
     color: var(--secondary-color);
     width: 50vw;
@@ -149,6 +169,7 @@ body {
     cursor: pointer;
     width: 7.5em;
     transition: transform 0.3s ease-out;
+    transition: background-color var(--transition-duration);
 }
 
 .tool-button:hover {
@@ -202,7 +223,7 @@ body {
     #profile-picture {
         width: 17vh;
         right: 3vh;
-        top: 20vh;
+        top: 40vh;
     }
 
     #github-icon {
@@ -232,6 +253,7 @@ body {
     .title {
         font-size: 200%;
     }
+
 
     body {
         width: 55.5vh;
