@@ -17,10 +17,8 @@
                 var likeCount = localStorage.getItem(blogId + "LikeCount") || 0;
                 var comments = JSON.parse(localStorage.getItem(blogId + "Comments")) || [];
 
-                // Update the initial like count
                 document.getElementById(likeCounterId).innerText = likeCount;
 
-                // Load comments from local storage
                 loadComments(commentSectionId);
 
                 icon.onclick = function () {
@@ -42,7 +40,6 @@
                     likeCount++;
                     document.getElementById(likeCounterId).innerText = likeCount;
 
-                    // Store the updated like count locally
                     localStorage.setItem(blogId + "LikeCount", likeCount);
                 }
 
@@ -52,10 +49,8 @@
                         var newComment = "NewUser: " + commentText;
                         comments.push(newComment);
 
-                        // Store the updated comments locally
                         localStorage.setItem(blogId + "Comments", JSON.stringify(comments));
 
-                        // Load and display comments
                         loadComments(commentSectionId);
 
                         document.getElementById(commentTextId).value = "";
@@ -74,17 +69,14 @@
                 }
 
                 function hideOverlay() {
-                    // Hide the overlay by changing its display property back to 'none'
                     document.getElementById('overlay').style.display = 'none';
                 }
 
                 document.getElementById(postCommentBtnId).addEventListener("click", postComment);
             }
 
-            // Initialize the first blog
             initializeBlog("blog1", "like-button1", "like-counter1", "comment-section1", "comment-text1", "post-comment-btn1");
 
-            // Initialize the second blog
             initializeBlog("blog2", "like-button2", "like-counter2", "comment-section2", "comment-text2", "post-comment-btn2");
 
             document.getElementById("back-button").addEventListener("click", function () {
@@ -98,7 +90,7 @@
             --secondary-color: aliceblue;
             --background-image: url(dark-bg.jpg);
             --bg-color: black;
-            --transition-duration: 0.3s; /* Add this line */
+            --transition-duration: 0.3s;
         }
 
         .light-theme {
@@ -125,7 +117,7 @@
             padding: 5px 10px;
             width: 100vw;
             text-align: center;
-            transition: background-color var(--transition-duration); /* Add this line */
+            transition: background-color var(--transition-duration);
         }
 
         .toolhead {
@@ -135,7 +127,7 @@
             background-color: var(--primary-color);
             color: var(--secondary-color);
             align-items: flex-end;
-            transition: background-color var(--transition-duration); /* Add this line */
+            transition: background-color var(--transition-duration);
         }
 
         #icon {

@@ -23,24 +23,19 @@ function showOverlay(section) {
 }
 
 function downloadResume() {
-    // Create a blob from the resume file
     fetch('resume.pdf')
         .then(response => response.blob())
         .then(blob => {
-            // Create an anchor element and set the necessary attributes for downloading
             var a = document.createElement('a');
             var url = window.URL.createObjectURL(blob);
             a.href = url;
             a.download = 'resume.pdf';
 
-            // Append the anchor to the body and trigger a click event
             document.body.appendChild(a);
             a.click();
 
-            // Remove the anchor from the body
             document.body.removeChild(a);
 
-            // Release the URL object
             window.URL.revokeObjectURL(url);
         })
         .catch(error => console.error('Error downloading resume:', error));
